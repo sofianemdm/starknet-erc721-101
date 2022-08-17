@@ -44,15 +44,16 @@ from contracts.utils.Ownable_base import (
 #
 
 @constructor
+
 func constructor{
         syscall_ptr : felt*,
         pedersen_ptr : HashBuiltin*,
         range_check_ptr
-    }(name: felt, symbol: felt, owner: felt, base_token_uri_len: felt, base_token_uri: felt*):
+    }(name: felt, symbol: felt, owner: felt, base_token_uri_len: felt, base_token_uri: felt*, token_uri_suffix: felt):
     ERC721_initializer(name, symbol)
     ERC721_Metadata_initializer()
     Ownable_initializer(owner)
-    ERC721_Metadata_setBaseTokenURI(base_token_uri_len, base_token_uri)
+    ERC721_Metadata_setBaseTokenURI(base_token_uri_len, base_token_uri, token_uri_suffix)
     return ()
 end
 
